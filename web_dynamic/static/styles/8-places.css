@@ -1,39 +1,36 @@
 .places {
-    column-count: 2;
-    columns: 30em;
+    display: flex;
+    width: calc(100% - 2 * 15px);
+    padding: 20px 15px;
+    align-items: center;
     justify-content: center;
-    padding: 0 20px;
-    margin-top: 1%;
-    margin-bottom: 8%;
-}
-@media only screen and (max-width: 920px)
-{
-    .places {
-	display: flex;
-	flex-wrap: wrap;
-    }
+    flex-flow: row wrap;
 }
 
-.placesh1 h1 {
+.placesh1 > h1 {
     width: 100%;
-    margin-right: 400px;
-    text-align: left;
-    font-size: 35px;
+    margin: 15px 0 0 0;
+    /* text-align: left; */
+    font-size: var(--font-largest);
 }
 
-.places article {
-    -webkit-column-break-inside: avoid;
-    page-break-inside: avoid;
-    display: inline-block;
+.places > article {
+    display: flex;
+    position: relative;
     width: 390px;
     height: 100%;
     padding: 20px;
     margin: 20px;
+    flex-direction: column;
+    align-self: stretch;
     border: 1px solid #FF5A5F;
     border-radius: 4px;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
 }
 .places h2 {
     font-size: 30px;
+    /* margin: 0 0 20px 0; */
     text-align: center;
     margin-top: 0;
 }
@@ -49,6 +46,7 @@
     max-width: 75%;
     word-wrap: break-word;
 }
+
 .price_by_night {
     display: flex;
     height: 60px;
@@ -147,4 +145,59 @@
 
 .places > article > .reviews > ul > li > p {
     font-size: var(--font-very-small);
+}
+
+@media (max-width: 480px) {
+    .places > article {
+        display: grid;
+        grid-auto-flow: row;
+        row-gap: 10px;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+        align-self: unset;
+    }
+
+    .places > article > h2 {
+        margin: 0;
+    }
+
+    .places > article > .price_by_night {
+        position: unset;
+        border-radius: 2.1em;
+        margin-bottom: 0;
+        width: fit-content;
+        height: fit-content;
+        top: 0;
+        right: 0;
+    }
+
+    .places > article > .information {
+        flex-direction: column;
+        height: fit-content;
+        align-items: flex-start;
+        margin: 0;
+        padding: 5px;
+    }
+
+    .places > article > .information > div {
+        flex-flow: row;
+    }
+
+    .places > article > .information > div:not(:first-child) {
+        margin-left: 0;
+        margin-top: 15px;
+    }
+
+    .places > article > .information > div > div {
+        margin-left: 5px;
+    }
+
+    .places > article > .amenities {
+        margin: 0;
+    }
+
+    .places > article > .reviews {
+        margin: 0;
+    }
 }
