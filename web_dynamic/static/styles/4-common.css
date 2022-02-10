@@ -1,3 +1,18 @@
+html {
+    height: 100%;
+    --font-very-small: 0.9em;
+    --font-small: 1.0em;
+    --font-medium: 1.1em;
+    --font-large: 1.5em;
+    --font-largest: 2.0em;
+    /* --font-very-small: 12px; */
+    /* --font-small: 14px; */
+    /* --font-medium: 16px; */
+    /* --font-large: 18px; */
+    /* --font-largest: 30px; */
+    /* overflow: auto; */
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -8,4 +23,15 @@ body {
 body .container {
     max-width: 1000px;
     margin: 30px auto;
+}
+
+@media (max-width: 480px) {
+    html {
+        height: 100%;
+        --font-very-small: 0.8em;
+        --font-small: 0.9em;
+        --font-medium: 1.1em;
+        --font-large: 1.5em;
+        --font-largest: 2.0em;
+    }
 }
