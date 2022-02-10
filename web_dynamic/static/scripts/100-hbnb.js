@@ -82,17 +82,10 @@ $(() => {
         dataType: 'json',
         success: data => {
           const placeOwnerPromises = data.map(place => new Promise((resolve, reject) => {
-            $.ajax({
-              url: `${BASE_URL}/users/${place.user_id}`,
-              type: 'GET',
-              data: JSON.stringify({}),
-              contentType: 'application/json; charset=utf-8',
-              dataType: 'json',
-              success: data => {
-                const fullPlace = place;
-                fullPlace.user = data;
-                resolve(fullPlace);
-              }
+            $.get(`${BASE_URL}/users/${place.user_id}`, (data, status) => {
+              const fullPlace = place;
+              fullPlace.user = data;
+              resolve(fullPlace);
             });
           }));
           Promise
