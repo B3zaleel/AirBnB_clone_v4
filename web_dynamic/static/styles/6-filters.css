@@ -95,6 +95,9 @@
 .filters > .amenities .popover > ul > li {
     margin: 5px 0;
     cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .filters > .locations .popover > ul > li > h2 {
