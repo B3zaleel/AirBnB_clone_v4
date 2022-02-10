@@ -43,7 +43,7 @@ $(() => {
         `${place.number_rooms}` +
         ` Bedroom${place.number_rooms !== 1 ? 's' : ''}` +
         '</div>';
-      const numberBathroomsHTML = '<div class="max_guest">' +
+      const numberBathroomsHTML = '<div class="number_bathrooms">' +
         `${place.number_bathrooms}` +
         ` Bathroom${place.number_bathrooms !== 1 ? 's' : ''}` +
         '</div>';
