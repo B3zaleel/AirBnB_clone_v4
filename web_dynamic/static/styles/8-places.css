@@ -97,5 +97,54 @@
 }
 
 .user {
-  margin-bottom: 1.5%;
+    margin-bottom: 1.5%;
+}
+
+.places > article > .reviews {
+    width: 100%;
+    margin-top: 40px;
+}
+
+.places > article > .reviews > div.header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    border-bottom: 1px solid #DDDDDD;
+    align-items: center;
+}
+
+.places > article > .reviews > div.header > h2 {
+    font-size: var(--font-medium);
+    text-align: left;
+    margin: 0;
+}
+
+.places > article > .reviews > div.header > span {
+    display: inline-block;
+    padding: 2.5px;
+    margin: 5px;
+    font-size: var(--font-medium);
+    background: #FF5A5F;
+    color: #FFFFFF;
+    border: 1px solid #FF545A;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.places > article > .reviews > div.header > span:hover {
+    opacity: 0.9;
+}
+
+.places > article > .reviews > ul {
+    list-style-type: none;
+    padding-left: 0;
+    max-height: 300px;
+    overflow: auto;
+}
+
+.places > article > .reviews > ul > li > h3 {
+    font-size: var(--font-small);
+}
+
+.places > article > .reviews > ul > li > p {
+    font-size: var(--font-very-small);
 }
