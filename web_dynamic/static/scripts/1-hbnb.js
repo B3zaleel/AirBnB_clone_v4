@@ -28,7 +28,7 @@ $(() => {
       }
     } else {
       amenitiesSelected = amenitiesSelected.filter(
-        obj => obj.id !== amenityId && obj.name !== amenityName
+        obj => (obj.id !== amenityId) && (obj.name !== amenityName)
       );
     }
     const htmlContent = amenitiesSelected.map(obj => obj.name).join(', ');

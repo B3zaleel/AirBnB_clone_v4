@@ -30,7 +30,7 @@ $(() => {
       }
     } else {
       amenitiesSelected = amenitiesSelected.filter(
-        obj => obj.id !== amenityId && obj.name !== amenityName
+        obj => (obj.id !== amenityId) && (obj.name !== amenityName)
       );
     }
     const htmlContent = amenitiesSelected.map(obj => obj.name).join(', ');
@@ -40,9 +40,10 @@ $(() => {
   });
 
   $.get(`${BASE_URL}/status`, (data, status) => {
-    if (status === 'success' && data.status === 'OK') {
-      if (!$('div#api_status').hasClass('available'))
+    if ((status === 'success') && (data.status === 'OK')) {
+      if (!$('div#api_status').hasClass('available')) {
         $('div#api_status').addClass('available');
+      }
     } else {
       $('div#api_status').removeClass('available');
     }

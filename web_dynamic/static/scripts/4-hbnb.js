@@ -16,26 +16,26 @@ $(() => {
       const titleBox = document.createElement('div');
       titleBox.className = 'title_box';
       const titleHTML = `<h2>${place.name}</h2>`;
-      const priceByNightHTML = '<div class="price_by_night">'
-        + `$${place.price_by_night}`
-        + '</div>';
+      const priceByNightHTML = '<div class="price_by_night">' +
+        `$${place.price_by_night}` +
+        '</div>';
       titleBox.insertAdjacentHTML('beforeend', titleHTML);
       titleBox.insertAdjacentHTML('beforeend', priceByNightHTML);
 
       const informationBox = document.createElement('div');
       informationBox.className = 'information';
-      const maxGuestHTML = '<div class="max_guest">'
-        + `${place.max_guest}`
-        + ` Guest${place.max_guest != 1 ? 's' : ''}`
-        + '</div>';
-      const numberRoomsHTML = '<div class="number_rooms">'
-        + `${place.number_rooms}`
-        + ` Bedroom${place.number_rooms != 1 ? 's' : ''}`
-        + '</div>';
-      const numberBathroomsHTML = '<div class="max_guest">'
-        + `${place.number_bathrooms}`
-        + ` Bathroom${place.number_bathrooms != 1 ? 's' : ''}`
-        + '</div>';
+      const maxGuestHTML = '<div class="max_guest">' +
+        `${place.max_guest}` +
+        ` Guest${place.max_guest !== 1 ? 's' : ''}` +
+        '</div>';
+      const numberRoomsHTML = '<div class="number_rooms">' +
+        `${place.number_rooms}` +
+        ` Bedroom${place.number_rooms !== 1 ? 's' : ''}` +
+        '</div>';
+      const numberBathroomsHTML = '<div class="max_guest">' +
+        `${place.number_bathrooms}` +
+        ` Bathroom${place.number_bathrooms !== 1 ? 's' : ''}` +
+        '</div>';
       informationBox.insertAdjacentHTML('beforeend', maxGuestHTML);
       informationBox.insertAdjacentHTML('beforeend', numberRoomsHTML);
       informationBox.insertAdjacentHTML('beforeend', numberBathroomsHTML);
@@ -43,8 +43,8 @@ $(() => {
       const userBox = document.createElement('div');
       userBox.className = 'user';
       if (place.user) {
-        const userHTML = `<b>Owner:</b>`
-          + ` ${place.user.first_name} ${place.user.last_name}`;
+        const userHTML = '<b>Owner:</b>' +
+          ` ${place.user.first_name} ${place.user.last_name}`;
         userBox.insertAdjacentHTML('beforeend', userHTML);
       }
 
@@ -70,7 +70,7 @@ $(() => {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         success: data => {
-          const placeOwnerPromises = data.map(place => new Promise((resolve1, reject1) => {
+          const placeOwnerPromises = data.map(place => new Promise((resolve, reject) => {
             $.ajax({
               url: `${BASE_URL}/users/${place.user_id}`,
               type: 'GET',
@@ -80,8 +80,7 @@ $(() => {
               success: data => {
                 const fullPlace = place;
                 fullPlace.user = data;
-                resolve1(fullPlace);
-                reject1(null);
+                resolve(fullPlace);
               }
             });
           }));
@@ -125,7 +124,7 @@ $(() => {
       }
     } else {
       amenitiesSelected = amenitiesSelected.filter(
-        obj => obj.id !== amenityId && obj.name !== amenityName
+        obj => (obj.id !== amenityId) && (obj.name !== amenityName)
       );
     }
     const htmlContent = amenitiesSelected.map(obj => obj.name).join(', ');
@@ -135,9 +134,10 @@ $(() => {
   });
 
   $.get(`${BASE_URL}/status`, (data, status) => {
-    if (status === 'success' && data.status === 'OK') {
-      if (!$('div#api_status').hasClass('available'))
+    if ((status === 'success') && (data.status === 'OK')) {
+      if (!$('div#api_status').hasClass('available')) {
         $('div#api_status').addClass('available');
+      }
     } else {
       $('div#api_status').removeClass('available');
     }
@@ -149,7 +149,7 @@ $(() => {
     const filter = {
       states: [],
       cities: [],
-      amenities: amenitiesSelected.map(obj => obj.id),
+      amenities: amenitiesSelected.map(obj => obj.id)
     };
 
     setPlaces(filter);
