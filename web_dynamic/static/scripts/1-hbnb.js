@@ -1,13 +1,13 @@
 'use strict';
 $(() => {
   let amenitiesSelected = [];
-  const amenitiesHeaderSelector = '.amenities > h4';
-  const checkboxSelector =
-    '.amenities > .popover > ul > li > input[type="checkbox"]';
-  const checkboxItemSelector =
-    '.amenities > .popover > ul > li';
+  const selectors = {
+    amenitiesHeader: '.amenities > h4',
+    amenityBox: '.amenities > .popover > ul > li > input[type="checkbox"]',
+    amenityItem: '.amenities > .popover > ul > li'
+  };
 
-  $(checkboxItemSelector).on('mousedown', ev => {
+  $(selectors.amenityItem).on('mousedown', ev => {
     const inputElements = ev.target.getElementsByTagName('input');
 
     if (inputElements) {
@@ -15,7 +15,7 @@ $(() => {
     }
   });
 
-  $(checkboxSelector).change(ev => {
+  $(selectors.amenityBox).change(ev => {
     const amenityId = ev.target.getAttribute('data-id');
     const amenityName = ev.target.getAttribute('data-name');
 
@@ -32,7 +32,7 @@ $(() => {
       );
     }
     const htmlContent = amenitiesSelected.map(obj => obj.name).join(', ');
-    $(amenitiesHeaderSelector).html(
+    $(selectors.amenitiesHeader).html(
       amenitiesSelected.length > 0 ? htmlContent : '&nbsp;'
     );
   });
