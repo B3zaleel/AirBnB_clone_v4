@@ -6,6 +6,7 @@ $(() => {
     '.amenities > .popover > ul > li > input[type="checkbox"]';
   const checkboxItemSelector =
     '.amenities > .popover > ul > li';
+  // const BASE_URL = 'http://localhost:5001/api/v1';
   const BASE_URL = 'http://0.0.0.0:5001/api/v1';
 
   const createPlace = place => {
@@ -60,6 +61,48 @@ $(() => {
       return null;
     }
   };
+  const getPlaces = filter => {
+    const placesFetcher = new Promise((resolve, reject) => {
+      $.ajax({
+        url: `${BASE_URL}/places_search`,
+        type: 'POST',
+        data: JSON.stringify(filter || {}),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        success: data => {
+          const placeOwnerPromises = data.map(place => new Promise((resolve1, reject1) => {
+            $.ajax({
+              url: `${BASE_URL}/users/${place.user_id}`,
+              type: 'GET',
+              data: JSON.stringify({}),
+              contentType: 'application/json; charset=utf-8',
+              dataType: 'json',
+              success: data => {
+                const fullPlace = place;
+                fullPlace.user = data;
+                resolve1(fullPlace);
+                reject1(null);
+              }
+            });
+          }));
+          Promise
+            .all(placeOwnerPromises)
+            .then(places => resolve(places))
+            .catch(err => reject(err));
+        }
+      });
+    });
+    return placesFetcher;
+  };
+  const setPlaces = filter => {
+    getPlaces(filter)
+      .then(places => {
+        $('section.places').empty();
+        for (let i = 0; i < places.length; i++) {
+          $('section.places').append(createPlace(places[i]));
+        }
+      });
+  };
 
   $(checkboxItemSelector).on('mousedown', ev => {
     const inputElements = ev.target.getElementsByTagName('input');
@@ -100,16 +143,5 @@ $(() => {
     }
   });
 
-  $.ajax({
-    url: `${BASE_URL}/places_search`,
-    type: 'POST',
-    data: JSON.stringify({}),
-    contentType: 'application/json; charset=utf-8',
-    dataType: 'json',
-    success: data => {
-      for (let i = 0; i < data.length; i++) {
-        $('section.places').append(createPlace(data[i]));
-      }
-    }
-  });
+  setPlaces({});
 });
