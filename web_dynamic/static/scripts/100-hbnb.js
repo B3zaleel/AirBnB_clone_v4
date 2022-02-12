@@ -101,6 +101,7 @@ $(() => {
     getPlaces(filter)
       .then(places => {
         $('section.places').empty();
+        $('section.places').append('<h1>Places</h1>');
         for (let i = 0; i < places.length; i++) {
           $('section.places').append(createPlace(places[i]));
         }
