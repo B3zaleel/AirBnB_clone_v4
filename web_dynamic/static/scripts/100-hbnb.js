@@ -107,11 +107,7 @@ $(() => {
       });
   };
   const clickChildInput = ev => {
-    const inputElement = ev.target.getElementsByTagName('input').item(0);
-
-    if (inputElement) {
-      inputElement.click();
-    }
+    ev.target.getElementsByTagName('input')?.item(0)?.click();
   };
 
   $(selectors.amenityItem).on('mousedown', clickChildInput);

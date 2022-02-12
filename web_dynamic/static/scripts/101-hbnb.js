@@ -15,8 +15,7 @@ $(() => {
     stateItem: '.locations > .popover > ul > li > h2',
     cityBox:
       '.locations > .popover > ul > li > ul > li > input[type="checkbox"]',
-    cityItem: '.locations > .popover > ul > li > ul > li',
-    reviewToggler: 'section.places > article > .reviews > div.header > span'
+    cityItem: '.locations > .popover > ul > li > ul > li'
   };
   const BASE_URL = 'http://localhost:5001/api/v1';
 
@@ -193,11 +192,7 @@ $(() => {
       });
   };
   const clickChildInput = ev => {
-    const inputElement = ev.target.getElementsByTagName('input').item(0);
-
-    if (inputElement) {
-      inputElement.click();
-    }
+    ev.target.getElementsByTagName('input')?.item(0)?.click();
   };
 
   $(selectors.amenityItem).on('mousedown', clickChildInput);

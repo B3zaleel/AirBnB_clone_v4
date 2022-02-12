@@ -8,11 +8,7 @@ $(() => {
   };
 
   $(selectors.amenityItem).on('mousedown', ev => {
-    const inputElements = ev.target.getElementsByTagName('input');
-
-    if (inputElements) {
-      inputElements.item(0).click();
-    }
+    ev.target.getElementsByTagName('input')?.item(0)?.click();
   });
 
   $(selectors.amenityBox).change(ev => {
