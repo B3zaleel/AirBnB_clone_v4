@@ -156,6 +156,7 @@ No known bugs at this time.
 ## Authors
 + Alexa Orrico - [Github](https://github.com/alexaorrico) / [Twitter](https://twitter.com/alexa_orrico)
 + Bezaleel Olakunori - [Github](https://github.com/B3zaleel) / [Twitter](https://twitter.com/bezxx_chihuahua)
++ Thomas Kigarde - [Github](https://github.com/MISTOM) / [Linkedin](https://linkedin.com/in/kigarde-thomas/)
 + David Ovalle - [Github](https://github.com/Nukemenonai) / [Twitter](https://twitter.com/disartDave)
 + Jennifer Huang - [Github](https://github.com/jhuang10123) / [Twitter](https://twitter.com/earthtojhuang)
 + Jhoan Zamora - [Github](https://github.com/jzamora5) / [Twitter](https://twitter.com/JhoanZamora10)
