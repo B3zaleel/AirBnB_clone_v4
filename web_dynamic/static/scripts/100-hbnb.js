@@ -17,8 +17,7 @@ $(() => {
       '.locations > .popover > ul > li > ul > li > input[type="checkbox"]',
     cityItem: '.locations > .popover > ul > li > ul > li'
   };
-  // const BASE_URL = 'http://localhost:5001/api/v1';
-  const BASE_URL = 'http://0.0.0.0:5001/api/v1';
+  const BASE_URL = 'http://localhost:5001/api/v1';
 
   const createPlace = place => {
     if (place) {

@@ -18,8 +18,7 @@ $(() => {
     cityItem: '.locations > .popover > ul > li > ul > li',
     reviewToggler: 'section.places > article > .reviews > div.header > span'
   };
-  // const BASE_URL = 'http://localhost:5001/api/v1';
-  const BASE_URL = 'http://0.0.0.0:5001/api/v1';
+  const BASE_URL = 'http://localhost:5001/api/v1';
 
   const getReviewDateText = reviewDate => {
     let dateText = '';
